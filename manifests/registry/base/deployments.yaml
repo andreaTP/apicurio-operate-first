@@ -25,10 +25,22 @@ spec:
         component: apicurio-registry
       name: apicurio-registry
     spec:
+      # serviceAccountName: sa-demo
       containers:
       - image: apicurio-registry:latest
         imagePullPolicy: Always
         name: apicurio-registry
+        # securityContext:
+        #   allowPrivilegeEscalation: true
+          # capabilities:
+          #   add: ["PERFMON"]
+          # capabilities:
+          #   add: ["SYS_ADMIN"]
+        # command:
+        #   - ./application
+        #   - -Dquarkus.http.host=0.0.0.0
+        #   - -XX:+FlightRecorder
+        #   - -XX:StartFlightRecording=filename=recording.jfr
         ports:
           - name: web
             containerPort: 8080
